@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?> 
+<?import java.lang.String?>
+
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="application.DashboardController">
+<!-- Top Header with Search Bar -->
+<top>
+	<HBox spacing="20.0" style="-fx-background-color: #FFA726;"
+		alignment="CENTER_LEFT">
+		<padding>
+			<Insets top="15.0" right="15.0" bottom="15.0" left="15.0" />
+		</padding>
+
+		<!-- Welcome Label -->
+		<Label text="🍽️ Welcome to FoodieHub!"
+			style="-fx-font-size: 20px; -fx-text-fill: white;" />
+
+		<!-- Spacer -->
+		<Region HBox.hgrow="ALWAYS" />
+
+        <!-- Category Dropdown -->
+        <ComboBox fx:id="categoryDropdown" promptText="Select Category" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="All"/>
+                    <String fx:value="Breakfast"/>
+                    <String fx:value="Lunch"/>
+                    <String fx:value="Dinner"/>
+                    <String fx:value="Snacks"/>
+                    <String fx:value="Desserts"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+		<!-- Search Bar -->
+		<TextField fx:id="searchField"
+			promptText="Search recipes..." prefWidth="250.0"
+			style="-fx-background-radius: 10; -fx-background-color: white;" />
+
+	</HBox>
+</top>
+
+    <!-- Left Navigation Panel -->
+    <left>
+        <VBox spacing="15.0" style="-fx-background-color: #FFF3E0;">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            <Button text="🏠 Home" prefWidth="150.0"/>
+            <Button text="➕ Add Recipe" prefWidth="150.0"/>
+            <Button text="❤️ Favorites" prefWidth="150.0"/>
+            <Button text="👤 Profile" prefWidth="150.0"/>
+        </VBox>
+    </left>
+
+    <!-- Main Content Area -->
+    <center>
+     <VBox spacing="10.0">
+        <!-- Generate Button aligned to top-right -->
+        <HBox alignment="CENTER_RIGHT">
+          <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            <Button text="Generate" fx:id="generateButton" onAction="#handleGenerate" prefWidth="120.0" prefHeight="40.0"
+                    style="-fx-background-color: #FB8C00; -fx-text-fill: white; -fx-font-weight: bold;" />
+        </HBox>
+        
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+    <content>
+        <TilePane fx:id="ingredientPane" hgap="15.0" vgap="15.0" prefTileWidth="200" alignment="TOP_LEFT">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+        </TilePane>
+    </content>
+</ScrollPane>
+   </VBox>
+
+    </center>
+
+    <!-- Footer -->
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" style="-fx-background-color: #FFE0B2;">
+            <padding>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </padding>
+            <Label text="© 2025 FoodieHub" style="-fx-font-size: 12px; -fx-text-fill: #757575;" />
+        </HBox>
+    </bottom>
+
+</BorderPane>

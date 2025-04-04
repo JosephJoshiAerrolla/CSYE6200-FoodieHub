@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController"
+            prefHeight="400.0" prefWidth="400.0" style="-fx-background-color:  #FFEFBA;">
+   
+   <children>
+
+      <!-- Background Image (Optional food image, use subtle or faded one for better UX) -->
+         <ImageView fitWidth="1600.0" fitHeight="800.0" preserveRatio="false"
+                 AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" opacity="0.2">
+         <image>
+            <Image url="@../assets/foodImage.jpg" />
+         </image>
+      </ImageView>
+
+      <!-- Login Panel -->
+      <VBox fx:id="loginBox" spacing="15" alignment="CENTER" maxWidth="70.0" maxHeight="70.0"
+            AnchorPane.topAnchor="150.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" opacity="0.9"
+            style="-fx-background-color: rgba(255, 255, 255, 0.85); -fx-background-radius: 20; -fx-padding: 25; -fx-border-color: #FFA500; -fx-border-width: 2; -fx-border-radius: 20;">
+         
+         <effect>
+            <DropShadow radius="10" spread="0.2" color="rgba(0,0,0,0.3)" />
+         </effect>
+
+
+         <!-- Login Title -->
+         <Label fx:id="titleLabel" text="Welcome to FoodieHub!" textFill="#D35400">
+            <font>
+               <Font fx:id="titleFont" name="Comic Sans MS Bold" size="22.0"/>
+            </font>
+         </Label>
+
+         <!-- Username -->
+         <TextField fx:id="usernames" promptText="Enter Username" maxWidth="300.0"
+                    style="-fx-background-color: #FFEBC9; -fx-border-radius: 5; -fx-background-radius: 5; -fx-text-fill: #5D4037;" />
+
+         <!-- Password -->
+         <PasswordField fx:id="passwords" promptText="Enter Password" maxWidth="300.0"
+                        style="-fx-background-color: #FFEBC9; -fx-border-radius: 5; -fx-background-radius: 5; -fx-text-fill: #5D4037;" />
+
+         <!-- Login Button -->
+         <Button fx:id="login_btn" mnemonicParsing="false" maxWidth="300.0" onAction="#handleLogin"
+                 style="-fx-background-color: #FFA500; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
+            <text>Log In</text>
+         </Button>
+
+         <!-- Register Section -->
+         <Label fx:id="registerLabel" text="Don't have an account?" textFill="#6D4C41" />
+         <Button fx:id="btn_register" mnemonicParsing="false" onAction="#goToRegister" 
+                 style="-fx-background-color: transparent; -fx-text-fill: #D35400; -fx-font-weight: bold; -fx-border-color: #D35400; -fx-border-radius: 5;" text="Sign Up Now" />
+
+         <!-- Error Message -->
+         <Label fx:id="errorMsg" textFill="red" />
+      </VBox>
+
+   </children>
+</AnchorPane>
