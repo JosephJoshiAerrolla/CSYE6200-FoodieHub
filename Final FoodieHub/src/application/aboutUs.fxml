@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="application.AboutUsController"
+      spacing="30"
+      alignment="TOP_CENTER"
+      style="-fx-background-color: #FFFDE7; -fx-padding: 30;">
+      
+      
+
+    <!-- Application Info Section -->
+    <VBox spacing="10" alignment="CENTER">
+        <Label text="About the Application" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #E65100;" />
+        <TextArea editable="false" wrapText="true" prefWidth="600" prefHeight="170" style="-fx-font-size: 20px;">
+            <text>
+                FoodieHub is your ultimate culinary companion that transforms your kitchen into a creative playground. In a world where time is precious, our innovative app takes the guesswork out of meal planning by allowing you to effortlessly select the ingredients you already have on hand. With a few taps, FoodieHub generates personalized, mouth-watering recipes that not only cater to your taste buds but also provide detailed nutrient information. Whether you’re a busy professional, a health-conscious enthusiast, or someone who simply loves exploring new flavors, FoodieHub makes cooking enjoyable, efficient, and inspiring. Embrace a smarter way to cook, and let every meal be a celebration of simplicity and nourishment.
+            </text>
+        </TextArea>
+    </VBox>
+
+    <!-- Developers Info Section -->
+    <Label text="Meet the Developers" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-text-fill: #E65100;" />
+
+    <HBox spacing="40" alignment="CENTER">
+        <!-- Developer 1 -->
+        <VBox spacing="10" alignment="CENTER">
+            <ImageView fx:id="dev1Image" fitWidth="100" fitHeight="100" preserveRatio="true">
+                <image>
+                    <Image url="./assets/aruna.jpeg"/>
+                </image>
+            </ImageView>
+            <Label text="Aruna S" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <Label text="Northeastern University" style="-fx-font-size: 16px;"  />
+            <Label text="Software Engineering Systems" style="-fx-font-size: 16px;" />
+            <Label text="Program: Jan 2025 - May 2027" style="-fx-font-size: 16px;" />
+        </VBox>
+
+        <!-- Developer 2 -->
+        <VBox spacing="10" alignment="CENTER">
+            <ImageView fx:id="dev2Image" fitWidth="100" fitHeight="100" preserveRatio="true">
+                <image>
+                    <Image url="./assets/harsha.jpeg"/>
+                </image>
+            </ImageView>
+            <Label text="Harsha" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <Label text="Northeastern University" style="-fx-font-size: 16px;"/>
+            <Label text="Information Systems" style="-fx-font-size: 16px;"/>
+            <Label text="Program: Sep 2024 - Dec 2026" style="-fx-font-size: 16px;" />
+        </VBox>
+
+        <!-- Developer 3 -->
+        <VBox spacing="10" alignment="CENTER">
+            <ImageView fx:id="dev3Image" fitWidth="100" fitHeight="100" preserveRatio="true">
+                <image>
+                    <Image url="./assets/joseph.jpeg"/>
+                </image>
+            </ImageView>
+            <Label text="Joseph" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <Label text="Northeastern University" style="-fx-font-size: 16px;"/>
+            <Label text="Information Systems" style="-fx-font-size: 16px;"/>
+            <Label text="Program: Jan 2024 - May 2026" style="-fx-font-size: 16px;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Back Button -->
+    <Button text="⬅ Back to Dashboard" onAction="#handleBack"
+            style="-fx-background-color: #FB8C00; -fx-text-fill: white; -fx-font-weight: bold;" />
+</VBox>

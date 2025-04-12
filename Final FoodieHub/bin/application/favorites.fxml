@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="application.FavoritesController">
+
+    <top>
+        <HBox style="-fx-background-color: #FFA726;" alignment="CENTER_LEFT" spacing="10.0">
+            <padding>
+                <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+            </padding>
+            <Button text="⬅ Back to Dashboard" onAction="#goBack"
+                    style="-fx-background-color: #FB8C00; -fx-text-fill: white; -fx-font-weight: bold;" />
+     
+         
+            <Label text="❤️ Your Favorite Recipes" style="-fx-font-size: 18px; -fx-text-fill: white;" />
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-padding: 15;">
+            <content>
+                <VBox fx:id="favoritesContainer" spacing="15.0" />
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

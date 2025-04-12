@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" 
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="application.PlannedMealsController"
+            style="-fx-background-color: linear-gradient(to bottom, #FFE082, #FFF8E1); -fx-padding: 0;">
+
+    <!-- Top: Orange Header with Back Button -->
+    <top>
+        <VBox style="-fx-background-color: #FFA726; -fx-padding: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Button text="⬅ Back to Dashboard" onAction="#goBack"
+                        style="-fx-background-color: #EF6C00; -fx-text-fill: white; -fx-font-weight: bold;" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center: Planned Meals Section, now top-aligned -->
+    <center>
+        <VBox spacing="20.0" alignment="TOP_CENTER"
+              style="-fx-background-color: #FFFDE7; -fx-padding: 40 30 20 30; -fx-border-color: #FFB300; -fx-border-radius: 8; -fx-background-radius: 8; -fx-border-width: 2;">
+
+            <Label text="📅 Your Planned Meals"
+                   style="-fx-font-size: 22px; -fx-text-fill: #E65100; -fx-font-weight: bold;" />
+
+            <ListView fx:id="plannedMealsList" prefHeight="400" prefWidth="600"
+                      style="-fx-background-color: #FFFDE7; -fx-border-color: #FFE0B2; -fx-border-radius: 5;" />
+        </VBox>
+    </center>
+
+</BorderPane>

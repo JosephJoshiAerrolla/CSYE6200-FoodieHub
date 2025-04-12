@@ -1,0 +1,125 @@
+Preliminary Step: Open the Project in Eclipse
+
+1. Open the Project in Eclipse:
+   - Navigate to the File:
+     - Launch Eclipse.
+     - Open the project folder that contains your application source code.
+
+Step 1: Configure the Project Build Path
+
+1. Open Project Properties:
+   - Right-click on your project in the Project Explorer.
+   - Select "Properties".
+
+2. Add JARs to the Build Path:
+   - In the Properties window, navigate to "Java Build Path".
+   - Go to the "Libraries" tab.
+   - Click "Add JARs..." (or "Add External JARs..." if necessary).
+   - Browse to the "lib" folder in your project directory.
+   - Select all JAR files in this folder and add them.
+   - Also add the JavaFX libraries:
+     - Click "Add Library…".
+     - Choose "User Library", then select the JavaFX user library from the list.
+   - Click "Apply and Close".
+
+Step 2: Set Up Run Configurations
+
+1. Open Run Configurations:
+   - Right-click on the "main.java" file.
+   - Hover over "Run As" and then click on "Run Configurations…".
+
+2. Configure Dependencies:
+   - In the Run Configurations window, navigate to the "Dependencies" section (or similar tab, depending on your Eclipse version).
+
+   For Modulepath Entries:
+   - Add all JARs from the "lib" folder that you included in the build path.
+
+   For ClassPath Entries:
+   - Add the JARs from the "lib" folder again, but exclude the following:
+     - JARs for "javax".
+     - JARs for "Jakarta".
+     - The "mysql-connector" JAR.
+   - Confirm your settings and click "Apply".
+
+Step 3: Configure the Database
+
+1. Execute the Database Script:
+   - Open your MySQL client.
+   - Run the provided database script file to set up the required tables and initial data.
+
+2. Update Database Login Details:
+   - Open the file "database.java" in your project.
+   - Replace the placeholders with your actual MySQL login credentials (e.g., username, password, host, and database name).
+   - Save your changes.
+   
+   and accordingly create the tables in order 
+   
+   CREATE TABLE users1 (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,  
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    phone VARCHAR(15),
+    verification_status BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE favorites (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    recipe_id INT,
+    recipe_title VARCHAR(255),
+    instructions TEXT,
+    nutrients TEXT,
+    servings INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users1(id)
+);
+
+CREATE TABLE meal_plan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    favorite_id INT NOT NULL,
+    planned_date DATE NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users1(id),
+    FOREIGN KEY (favorite_id) REFERENCES favorites(id)
+);
+
+CREATE TABLE published_recipes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    title VARCHAR(255),
+    description TEXT,
+    ingredients TEXT,
+    instructions TEXT,
+    servings INT,
+    image_path VARCHAR(255), 
+    rating DOUBLE DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users1(id)
+);
+
+
+CREATE TABLE recipe_ratings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT NOT NULL,
+    rated_by INT NOT NULL,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    FOREIGN KEY (recipe_id) REFERENCES published_recipes(id),
+    FOREIGN KEY (rated_by) REFERENCES users1(id)
+);
+
+
+Step 4: Run the Application
+
+1. Launch the Application:
+   - With the build path, run configurations, and database set up, you can now run the application.
+   - Right-click on "main.java" again.
+   - Select "Run As" > "Java Application".
+   -In the VM arguments section, add the following:
+        --add-modules javafx.controls,javafx.fxml
+  
+
+2. Verify Successful Launch:
+   - The application should now start, connecting to the database using your provided credentials.
+   - Check the Eclipse console for any messages or errors to ensure that everything is set up correctly.

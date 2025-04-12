@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="application.HomeController"
+            style="-fx-background-color: #FFF8E1;">
+
+    <!-- Top Bar with Navigation -->
+    <top>
+    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 10; -fx-background-color: #FFA726;">
+        <Button text="← Back to Dashboard"
+                onAction="#goBackToDashboard"
+                style="-fx-background-color: #EF6C00; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+        <Label text="‍🍳🔍 Explore Recipes from Other Foodies"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
+
+        <Region fx:id="spacer" HBox.hgrow="ALWAYS" />
+
+        <Button text="Other Users"
+                onAction="#showOthersRecipes"
+                style="-fx-background-color: #AB47BC; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+        <Button text="My Recipes"
+                onAction="#showMyRecipes"
+                style="-fx-background-color: #8E24AA; -fx-text-fill: white; -fx-font-weight: bold;" />
+    </HBox>
+</top>
+
+
+    <!-- Scrollable Content in Center -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox fx:id="homeContainer"
+                  spacing="30"
+                  alignment="TOP_CENTER"
+                  style="-fx-padding: 25 40 40 40;">
+                <!-- All recipe cards will be dynamically added here -->
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
